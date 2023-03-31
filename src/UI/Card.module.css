@@ -1,0 +1,17 @@
+.card {
+  background: white;
+  max-width: 310px;
+  min-width: 310px;
+  width: 100%;
+  margin: 8px auto;
+  padding: 16px;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  /* position: absolute;
+  top: 50px;
+  left: 36%; */
+}

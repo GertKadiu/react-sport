@@ -1,0 +1,106 @@
+.cardHeader {
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+}
+
+.tags{
+   display: flex;
+   justify-content: space-between;
+   width: 63%;
+   font-size: 12px;
+   color: black;
+}
+
+.taget{
+   background-color: #EBEBEB;
+   border-radius: 13px;
+   color: #3C3A3B;
+   padding: 0.3px 9px;
+}
+.name{
+   display: flex;
+   flex-direction: column;
+}
+
+.line {
+   background-color: #EBEBEB;
+   border-radius: 10px;
+   padding: 1px;
+   width: 100%;
+   margin-top: 12px;
+}
+
+.time {
+   display: flex;
+   width: 46%;
+   align-items: center;
+   justify-content: space-between;
+   margin-top: 10px;
+   font-size: 14px;
+   color: #3C3A3B;
+}
+
+.contanier {
+   display: flex;
+   justify-content: space-between;
+   width: 65%;
+   font-size: 14px;
+}
+
+.participants{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 17%;
+   margin-top: 6px;
+   margin-bottom: 6px;
+   font-size: 14px;
+   color: #3C3A3B;
+}
+
+.description{
+   display: flex;
+   justify-content: space-between;
+   width: 23%;
+   margin-top: 10px;
+   font-size: 16px;
+   color: #3C3A3B;
+}
+
+.profile {
+   display: flex;
+   width: 37%;
+   justify-content: space-between;
+}
+
+.profile2 {
+   display: flex;
+   align-items: flex-end;
+   align-items: center;
+   width: 28%;
+}
+
+.border {
+   width: 100%;
+   border: 4px green;
+}
+
+.button {
+   width: 20%;
+}
+
+.icon {
+   display: flex;
+   width: 16%;
+   justify-content: space-between;
+   margin-top: 12px ;
+}
+
+.likes {
+   display: flex;
+   width: 23%;
+   justify-content: flex-start;
+   margin-top: 6px;
+   font-size: 14px;
+}

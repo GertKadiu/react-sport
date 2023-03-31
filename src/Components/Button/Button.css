@@ -1,0 +1,63 @@
+.primaryBtn {
+  background: #118c94;
+  color: white;
+  border-radius: 5px;
+  padding: 12px 0px;
+  text-align: center;
+  width: 100%;
+  max-width: 376px;
+}
+
+.primaryBtn:hover {
+  background: #0c7b83;
+}
+
+.secondaryBtn {
+  background: #118c94;
+  color: white;
+  border-radius: 5px;
+  padding: 2px 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.secondaryBtn:hover {
+  background: #0c7b83;
+}
+
+.tertiaryBtn {
+  background-color: transparent;
+  border: 1px solid #3c3a3b;
+  border-radius: 5px;
+  color: #3c3a3b;
+  padding: 8px 0px;
+  text-align: center;
+  width: 100%;
+  max-width: 336px;
+}
+
+.tertiaryBtn:hover {
+  background-color: #ededed;
+}
+
+.postBtn {
+  background-color: #118c94;
+  color: #CCCCCC;
+  font-size: 16px;
+  padding: 10px 10px;
+  border-radius: 18px;
+}
+
+.postBtn:hover {
+  background: #0c7b83;
+}
+
+.disabled {
+  background: #CCCCCC;
+  color: #FFFFFF;
+  border-radius: 5px;
+  padding: 12px 0px;
+  text-align: center;
+  width: 100%;
+  max-width: 376px;
+}

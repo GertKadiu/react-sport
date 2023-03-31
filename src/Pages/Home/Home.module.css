@@ -1,0 +1,7 @@
+.contanier {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  flex-direction: column;
+  background-color: #ebebeb;
+}

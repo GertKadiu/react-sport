@@ -1,0 +1,51 @@
+.contanier {
+  display: flex;
+  max-width: 376px;
+  margin: auto;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+  padding: 0 16px 16px;
+}
+
+.line {
+  background-color: #ebebeb;
+  border-radius: 10px;
+  padding: 0.1px;
+  width: 100%;
+}
+
+.first {
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  width: 60%;
+  justify-content: space-between;
+  height: 55px;
+}
+
+.profile {
+  display: flex;
+  align-self: flex-start;
+  width: 32%;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+.text {
+  color: #3c3a3b;
+  font-size: 16px;
+}
+
+.text2 {
+  color: #3c3a3b;
+  margin-top: 22px;
+  margin-bottom: 4px;
+}
+
+.chat {
+margin-top: 16px;
+margin-bottom: 4px;
+}

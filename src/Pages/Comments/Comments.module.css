@@ -1,0 +1,14 @@
+.contanier {
+   display: flex;
+   align-items: center;
+   height: 100%;
+   margin: auto;
+   flex-direction: column;
+   background-color:#F4F4F4;
+}
+
+.comments{
+   margin-right: 265px;
+   font-size: 16px;
+}
+

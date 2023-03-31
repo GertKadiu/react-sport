@@ -1,0 +1,43 @@
+.body{
+   width: 100%;
+   background-color: #F4F4F4;
+   height: 100%;
+}
+
+.contanier {
+   display: flex;
+   max-width: 350px;
+   margin:  auto;
+   padding: 0 18px;
+   height: 100vh;
+   flex-direction: column;
+   background-color: white;
+   align-items: center;
+}
+
+.line {
+   background-color: #EBEBEB;
+   border-radius: 10px;
+   padding: 1px;
+   width: 100%;
+   margin-bottom: 32px;
+}
+
+.text {
+   color: #118C94;
+   margin-top: 16px;
+   margin-bottom: 32px;
+   font-size: 14px;
+}
+
+.first {
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  width: 60%;
+  justify-content: space-between;
+  margin: 16px 0 16px;
+}
+
+
+

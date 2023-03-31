@@ -1,0 +1,26 @@
+.class {
+  display: flex;
+  flex-direction: column;
+  margin-left: 6px;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 16px;
+  color: black;
+}
+
+.buttom {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.hour {
+  font-size: 12px;
+  color: #666666;
+}
+
+.text {
+  font-size: 16px;
+  color: #3c3a3b;
+}
