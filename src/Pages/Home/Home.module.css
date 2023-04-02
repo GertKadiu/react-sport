@@ -5,3 +5,8 @@
   flex-direction: column;
   background-color: #ebebeb;
 }
+
+.navBar {
+  z-index: 9;
+  position: fixed;
+}

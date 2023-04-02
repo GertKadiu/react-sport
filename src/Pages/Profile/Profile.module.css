@@ -2,7 +2,6 @@
    display: flex;
    align-items: center;
    margin: auto;
-   height: 1000px;
    flex-direction: column;
    background-color: #F4F4F4;
 }
@@ -12,7 +11,7 @@
    align-items: center;
    justify-content: space-between;
    width: 100%;
-   margin-top: 16px;
+   margin-top: 76px;
    max-width: 330px;
 }
 
@@ -63,4 +62,9 @@
    margin-right: 185px;
    margin-top: 8px;
    font-size: 14px;
+}
+
+.navBar {
+  z-index: 9;
+  position: fixed;
 }

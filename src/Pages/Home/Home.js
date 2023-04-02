@@ -38,16 +38,11 @@ const DUMMY_DATA = [
 function Home(props) {
   return (
     <div className={classes.contanier}>
-      <div
-        style={{
-          position: "fixed",
-          zIndex: 9,
-        }}
-      >
+      <div className={classes.navBar}>
         <NavBar isNavbar />
       </div>
       <FormControl
-        sx={{ width: "340px", marginBottom: "16px", marginTop: "8px" }}
+        sx={{ width: "340px", marginBottom: "4px", marginTop: "66px" }}
       >
         <Chip label="Search tag" />
       </FormControl>
@@ -64,7 +59,9 @@ function Home(props) {
           />
         ))}
       </ul>
-      <Fab />
+     
+        <Fab />
+      
     </div>
   );
 }

@@ -34,11 +34,12 @@ function Profile(props) {
 
   return (
     <div className={classes.contanier}>
+      <div className={classes.navBar}>
       <NavBar isNavbarProfile name="Hinata" />
+      </div>
       <div className={classes.header}>
         <div>
           <Avatar sx={{ width: 74, height: 74 }}>
-            {" "}
             <img
               src={ima2}
               alt="background"
