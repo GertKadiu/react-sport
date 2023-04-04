@@ -9,14 +9,43 @@ import { useNavigate } from "react-router-dom";
 import Input from "../../Components/Input/Input";
 import Card from "../../UI/Card";
 import ima2 from "../../Components/Images/kokaxhines.png";
-
+import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
+import AttachmentIcon from "@mui/icons-material/Attachment";
+import useInput from "../../Components/hooks/use-inpute";
 
 function CreatePost(props) {
   const navigate = useNavigate();
 
   let formIsValid = false;
-  
 
+  const {
+    value: enteredSomething,
+    isValid: enteredSomethingIsValid,
+    valueChangeHandler: somethingChangeHandler,
+  } = useInput((value) => value.trim() !== "");
+
+  const {
+    value: enteredNumber,
+    isValid: enteredNumberIsValid,
+    valueChangeHandler: numberChangeHandler,
+  } = useInput((value) => value.trim() !== "");
+
+  const {
+    value: enteredUrl,
+    isValid: enteredUrlIsValid,
+    valueChangeHandler: urlChangeHandler,
+  } = useInput((value) => value.trim() !== "");
+
+  if (enteredSomethingIsValid && enteredNumberIsValid && enteredUrlIsValid) {
+    formIsValid = true;
+  }
+
+  function clickHandler(e) {
+  if (formIsValid === true) {
+    navigate('/profile')
+  }
+}
+  
   return (
     <div className={classes.body}>
       <Card>
@@ -39,6 +68,8 @@ function CreatePost(props) {
         </div>
         <div style={{ width: "100%" }}>
           <Input
+            value={enteredSomething}
+            onChange={somethingChangeHandler}
             id="standard-basic"
             label="What's in your mind?"
             variant="standard"
@@ -46,23 +77,27 @@ function CreatePost(props) {
             autoComplete="off"
           />
           <div className={classes.text2}>Post Detail</div>
-          <div style={{ marginBottom: "12px" }}>
-            <Input
-              isPeople
-              label="People Limit"
-              type="number"
-              id="test"
-              autoComplete="off"
-              variant="filled"
-            />
-          </div>
+          <Input
+            IsUsername
+            Icon={<PeopleOutlineIcon />}
+            value={enteredNumber}
+            onChange={numberChangeHandler}
+            label="People Limit"
+            type="number"
+            id="test"
+            autoComplete="off"
+            variant="filled"
+          />
           <Input isClaendar />
           <div style={{ marginTop: "16px" }}>Tags</div>
           <Chip label="Choose tag" />
           <div className={classes.chat}>Chat Link</div>
-          <div style={{ marginBottom: "30px" }}>
+          <div style={{ marginBottom: "10px" }}>
             <Input
-              isAttachment
+              IsUsername
+              value={enteredUrl}
+              onChange={urlChangeHandler}
+              Icon={<AttachmentIcon />}
               label="Add Chat Link"
               variant="filled"
               type="link"
@@ -72,7 +107,7 @@ function CreatePost(props) {
         <Button
           type={formIsValid ? ButtonTypes.PRIMARY : ButtonTypes.DISABLED}
           btnText="Post"
-          onClick={() => navigate("/home")}
+          onClick={clickHandler}
         />
       </Card>
     </div>

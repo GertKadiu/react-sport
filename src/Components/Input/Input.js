@@ -7,31 +7,11 @@ import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { styled } from "@mui/material/styles";
-import AttachmentIcon from "@mui/icons-material/Attachment";
-import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import { IconButton } from "@mui/material";
 import Button from "../Button/Button";
 import { ButtonTypes } from "../Button/ButtonTypes";
 
 function Input(props) {
-
-  const CssTextField = styled(TextField)({
-    "& label.Mui-focused": {
-      color: "#118C94",
-    },
-    "& .MuiInput-underline:after": {
-      borderBottomColor: "#118C94",
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "#EBEBEB",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "#118C94",
-      },
-    },
-  });
 
   const PostButton = () => (
     <IconButton>
@@ -39,37 +19,11 @@ function Input(props) {
     </IconButton>
   );
 
-  const RedditTextField = styled((props) => (
-    <TextField InputProps={{}} {...props} />
-  ))(({ theme }) => ({
-    "& .MuiFilledInput-root": {
-      border: "1px solid #e2e2e1",
-      overflow: "hidden",
-      borderRadius: 4,
-      backgroundColor: theme.palette.mode === "light" ? "#fcfcfb" : "#2b2b2b",
-      transition: theme.transitions.create([
-        "border-color",
-        "background-color",
-        "box-shadow",
-      ]),
-      "&:hover": {
-        backgroundColor: "transparent",
-      },
-      "&.Mui-focused": {
-        backgroundColor: "transparent",
-        boxShadow: `none`,
-        borderColor: "#118C94",
-      },
-      "& input[type=number]::-webkit-outer-spin-button": {
-        "-webkit-appearance": "none",
-        margin: 0,
-      },
-      "& input[type=number]::-webkit-inner-spin-button": {
-        "-webkit-appearance": "none",
-        margin: 0,
-      },
-    },
-  }));
+  const Icon = (props) => (
+    <IconButton>
+      {props.Icon}
+    </IconButton>
+  );
 
   const [value, setValue] = React.useState(null);
 
@@ -106,89 +60,35 @@ function Input(props) {
 
       {props.isPosting && (
         <FormControl fullWidth>
-        <TextField
-          label={props.label}
-          type={props.type}
-          variant={props.variant}
-          autoComplete="off"
-          sx={{
-            "& .MuiFilledInput-root": {
-              border: "1px solid #e2e2e1",
-              overflow: "hidden",
-              backgroundColor: "transparent",
-              borderRadius: 1,
-              "&.Mui-focused": {
-                backgroundColor: "transparent",
-                boxShadow: `none`,
-                borderColor: "#118C94",
-              },
-              "&:hover": {
-                backgroundColor: "transparent",
-              },
-            },
-          }}
-          InputProps={{
-          disableUnderline: true,
-          endAdornment:
-          <PostButton value={props.value} onClick={props.onClick} 
-          /> 
-        }}
-          InputLabelProps={{
-            style: { color: "#666666" },
-          }}
-        /></FormControl>
-      )}
-
-      {props.isAttachment && (
-        <FormControl fullWidth>
-          <RedditTextField
+          <TextField
             label={props.label}
             type={props.type}
-            id={props.id}
             variant={props.variant}
-            InputLabelProps={{
-              style: { color: "#666666" },
+            autoComplete="off"
+            sx={{
+              "& .MuiFilledInput-root": {
+                border: "1px solid #e2e2e1",
+                overflow: "hidden",
+                backgroundColor: "transparent",
+                borderRadius: 1,
+                "&.Mui-focused": {
+                  backgroundColor: "transparent",
+                  boxShadow: `none`,
+                  borderColor: "#118C94",
+                },
+                "&:hover": {
+                  backgroundColor: "transparent",
+                },
+              },
             }}
             InputProps={{
               disableUnderline: true,
               endAdornment: (
-                <InputAdornment
-                  sx={{
-                    width: 30,
-                  }}
-                  position="end"
-                >
-                  <AttachmentIcon />
-                </InputAdornment>
+                <PostButton value={props.value} onClick={props.onClick} />
               ),
             }}
-          />
-        </FormControl>
-      )}
-
-      {props.isPeople && (
-        <FormControl fullWidth>
-          <RedditTextField
-            label={props.label}
-            type={props.type}
-            id={props.id}
-            autoComplete={props.autoComplete}
-            variant={props.variant}
             InputLabelProps={{
               style: { color: "#666666" },
-            }}
-            InputProps={{
-              disableUnderline: true,
-              endAdornment: (
-                <InputAdornment
-                  sx={{
-                    width: 30,
-                  }}
-                  position="end"
-                >
-                  <PeopleOutlineIcon />
-                </InputAdornment>
-              ),
             }}
           />
         </FormControl>
@@ -196,17 +96,36 @@ function Input(props) {
 
       {props.isCssTextField && (
         <FormControl fullWidth>
-          <CssTextField
+          <TextField
             autoComplete={props.autoComplete}
             id={props.id}
+            value={props.value}
+            onChange={props.onChange}
             label={props.label}
             variant={props.variant}
+            sx={{
+              "& label.Mui-focused": {
+                color: "#118C94",
+              },
+              "& .MuiInput-underline:after": {
+                borderBottomColor: "#118C94",
+              },
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: "#EBEBEB",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#118C94",
+                },
+              },
+            }}
             InputLabelProps={{
               style: { color: "#999999", width: "100%" },
             }}
           />
         </FormControl>
       )}
+
       {props.IsUsername && (
         <TextField
           style={{ marginBottom: 16 }}
@@ -234,6 +153,14 @@ function Input(props) {
               "&:hover": {
                 backgroundColor: "transparent",
               },
+              "& input[type=number]::-webkit-outer-spin-button": {
+                "-webkit-appearance": "none",
+                margin: 0,
+              },
+              "& input[type=number]::-webkit-inner-spin-button": {
+                "-webkit-appearance": "none",
+                margin: 0,
+              },
             },
           }}
           InputLabelProps={{
@@ -241,6 +168,16 @@ function Input(props) {
           }}
           InputProps={{
             disableUnderline: true,
+            endAdornment: (
+              <InputAdornment
+                sx={{
+                  width: 30,
+                }}
+                position="end"
+              >
+                {<Icon Icon={props.Icon} />}
+              </InputAdornment>
+            ),
           }}
         />
       )}

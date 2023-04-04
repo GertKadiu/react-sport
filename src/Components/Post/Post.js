@@ -7,10 +7,10 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import AssignmentOutlinedIcon from "@mui/icons-material/AssignmentOutlined";
-import { Link } from "react-router-dom";
 import LongMenu from "../../Menu/Menu";
 import Card from "../../UI/Card";
-import ima2 from '../../Components/Images/kokaxhines.png'
+import ima2 from "../../Components/Images/kokaxhines.png";
+import { Link } from "react-router-dom";
 
 function Post(props) {
   const { name, description, time, participants, tags, likes, comments } =
@@ -23,7 +23,11 @@ function Post(props) {
         <div className={clasess.profile}>
           <div>
             <Avatar sx={{ width: 40, height: 40 }}>
-              <img src={ima2} alt='background' style={{width:40, height:40}}/>
+              <img
+                src={ima2}
+                alt="background"
+                style={{ width: 40, height: 40 }}
+              />
             </Avatar>
           </div>
           <div className={clasess.name}>
@@ -68,16 +72,15 @@ function Post(props) {
         <AssignmentOutlinedIcon sx={{ width: 20, height: 20 }} />
       </div>
       <div className={clasess.likes}>{likes}</div>
-      <di style={{ color: "#999999", fontSize: "smaller" }}>{comments}</di>
       <Link
         style={{
-          textDecoration: "none",
           color: "#999999",
           fontSize: "smaller",
+          textDecoration: "none",
         }}
         to="/comments"
       >
-        Show all 12 comments
+        {comments}
       </Link>
     </Card>
   );

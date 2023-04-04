@@ -10,13 +10,11 @@ import { useNavigate } from "react-router-dom";
 import ima2 from "../../Components/Images/kokaxhines.png";
 import useInput from "../../Components/hooks/use-inpute";
 
-
 function EditProfile(props) {
 
   const navigate = useNavigate()
 
   let formIsValid = false;
-
 
   const {
     value: enteredName,
@@ -28,13 +26,11 @@ function EditProfile(props) {
       value: enteredBio,
       isValid: enteredBioIsValid,
       valueChangeHandler: bioChangeHandler,
-      InputBlurHandler: bioBlurHandler,
     } = useInput((value) => value.trim() !== "");
 
-
-    if(enteredNameIsValid && enteredBioIsValid){
-      formIsValid = true;   }
-
+    if(enteredNameIsValid && enteredBioIsValid) {
+      formIsValid = true;   
+    }
 
   return (
     <div className={classes.body}>
@@ -66,7 +62,6 @@ function EditProfile(props) {
             IsUsername
               value={enteredBio}
             onChange={bioChangeHandler}
-            onBlur={bioBlurHandler}
             label="Bio"
             type="text"
             variant="filled"

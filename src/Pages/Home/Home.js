@@ -23,6 +23,7 @@ const DUMMY_DATA = [
     participants: "0/5",
     tags: "football",
     likes: "12 Likes",
+    comments: "Show all comments",
   },
   {
     key: "p3",
@@ -32,6 +33,7 @@ const DUMMY_DATA = [
     participants: "5/5",
     tags: "football",
     likes: "12 Likes",
+    comments: "Show all comments",
   },
 ];
 
@@ -56,12 +58,11 @@ function Home(props) {
             participants={data.participants}
             tags={data.tags}
             likes={data.likes}
+            comments={data.comments}
           />
         ))}
       </ul>
-     
         <Fab />
-      
     </div>
   );
 }
