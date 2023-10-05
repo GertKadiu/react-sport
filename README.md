@@ -10,6 +10,6 @@ To run:
 
 4.Open terminal in folder (in windows you can open it by SHIFT + RIGHT CLICK => open powershell)
 
-5.'npm install' + enter
+5.'npm install' + enter to install all dependencies.
 
-6.'npm start' + enter
+6.'npm start' + enter to run the project.
