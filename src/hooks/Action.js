@@ -449,12 +449,10 @@ export const CommentAction = () => {
 
   const navigate = useNavigate();
 
-  const handleGoBack = () => {
-    navigate(-1);
-  };
+  
 
   return {
-    handleGoBack,
+    navigate,
     resetCommentInput,
     displayedCommentsData,
     postData,
@@ -463,7 +461,6 @@ export const CommentAction = () => {
     comentInputHasError,
     commentBlur,
     enteredCommentIsValid,
-    navigate,
     post,
     enteredComment,
     isLoading,

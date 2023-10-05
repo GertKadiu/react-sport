@@ -129,8 +129,9 @@
 
 .deleteModal p {
   background: white;
-  padding: 30px;
+  padding: 20px;
   max-width: 300px;
+  height: 100px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
@@ -149,15 +150,18 @@
   margin-right: 20px;
   border-radius: 5px;
   border-color: transparent;
+  margin-top: 10px;
+  background-color: #118C94;
+  color: white;
 }
 
-.yes:hover {
-  background-color: red;
-}
+
 
 .no {
   padding: 10px;
-  border-color: red;
+  background-color: red;
   border-radius: 5px;
   border-color: transparent;
+  color: white;
+  margin-top: 10px;
 }

@@ -10,7 +10,7 @@ import { useModal } from "../../hooks/Counter";
 
 function Comments() {
   const {
-    handleGoBack,
+    navigate,
     postData,
     createComment,
     comentChangeHandler,
@@ -23,10 +23,14 @@ function Comments() {
     handleLoadMore,
     displayedComments,
     displayedCommentsData,
-    comments
+    comments,
   } = CommentAction();
 
     const { isModalOpen, modalType,  setIsModalOpen } = useModal();
+
+    const handleGoBack = () => {
+      navigate(-1);
+    };
 
   return (
     <>

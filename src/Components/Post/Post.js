@@ -150,16 +150,23 @@ function Post(props) {
                 </>
               ) : null}
               {isDeleteModalOpen && (
-                <div className={`${clasess.deleteModal} delete-modal`}>
-                  <p>Are you sure you want to delete this post?</p>
-                  <div className={clasess.deletebutton}>
-                    <button className={clasess.yes} onClick={confirmDelete}>
-                      Yes
-                    </button>
-                    <button className={clasess.no} onClick={closeDeleteModal}>
-                      No
-                    </button>
-                  </div>
+                <div className={`${clasess.deleteModal} ${"delete-modal"}`}>
+                  <p>
+                    Are you sure you want to delete this post?
+                    <span>
+                      <div className={clasess.buttonContainer}>
+                        <button className={clasess.yes} onClick={confirmDelete}>
+                          Yes
+                        </button>
+                        <button
+                          className={clasess.no}
+                          onClick={closeDeleteModal}
+                        >
+                          No
+                        </button>
+                      </div>
+                    </span>
+                  </p>
                 </div>
               )}
             </div>
