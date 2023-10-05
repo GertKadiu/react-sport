@@ -72,7 +72,7 @@ function Profile(props) {
             <div>{avatar}</div>
           )}
           <div className={classes.follow}>
-            <div style={{ fontSize: "16px" }}>
+            <div style={{ fontSize: "16px",}}>
               {users[0]?.followersCount || 0}
             </div>
             <div
