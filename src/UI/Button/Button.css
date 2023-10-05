@@ -2,10 +2,13 @@
   background: #118c94;
   color: white;
   border-radius: 5px;
+  border-color: #118c94;
   padding: 12px 0px;
   text-align: center;
   width: 100%;
   max-width: 376px;
+  border: none;
+  display: block;
 }
 
 .primaryBtn:hover {
@@ -33,31 +36,65 @@
   padding: 8px 0px;
   text-align: center;
   width: 100%;
-  max-width: 336px;
 }
 
 .tertiaryBtn:hover {
   background-color: #ededed;
 }
 
-.postBtn {
+.followBtn {
   background-color: #118c94;
-  color: #CCCCCC;
+  border-radius: 5px;
+  border-color: transparent;
+  color: #ffffff;
+  padding: 8px 0px;
+  text-align: center;
+  width: 100%;
+}
+
+.followBtn:hover {
+  background-color: #118c94;
+}
+
+.modalBtn {
+  background-color: #ebebeb;
+  border-radius: 5px;
+  border-color: transparent;
+  color: #3c3a3b;
+  padding: 8px 0px;
+  text-align: center;
+  width: 70px;
+}
+
+.modalBtn:hover {
+  background-color: #ebebeb;
+}
+
+.postBtn {
+  background-color: #ffffff;
+  color: #cccccc;
   font-size: 16px;
   padding: 5px 12px;
-  
+  border: none;
+  display: block;
 }
 
 .postBtn:hover {
   background: #0c7b83;
+  border: none;
+  display: block;
+  border-radius: 60px;
 }
 
 .disabled {
-  background: #CCCCCC;
-  color: #FFFFFF;
+  background: #cccccc;
+  color: #ffffff;
   border-radius: 5px;
   padding: 12px 0px;
   text-align: center;
   width: 100%;
   max-width: 376px;
+  cursor: not-allowed;
+  border: none;
+  display: block;
 }

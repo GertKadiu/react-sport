@@ -8,6 +8,7 @@
   font-weight: bold;
   font-size: 16px;
   color: black;
+  text-decoration: none;
 }
 
 .buttom {
@@ -21,6 +22,27 @@
 }
 
 .text {
-  font-size: 16px;
+  font-size: 14px;
   color: #3c3a3b;
+  line-height: normal;
 }
+.comments {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #3c3a3b;
+  word-break: break-all;
+  max-width: 270px;
+  min-width: 270px;
+}
+
+.deleteIcon {
+  color: #666666;
+  cursor: pointer;
+  display: flex;
+}
+
+.deleteIcon:hover{
+  color: red;
+}
+

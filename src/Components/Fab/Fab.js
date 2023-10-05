@@ -9,34 +9,24 @@ export default function FloatingActionButtonSize() {
   const navigate = useNavigate();
 
   const StyledFab = styled(Fab)(({ theme }) => ({
-    width: "58px",
-    height: "58px",
+    width: "68px",
+    height: "68px",
     backgroundColor: "#118C94",
-    position: "sticky",
+    position: "fixed",
+    right: "40%",
+    top: "83%",
     color: "#FFFFFF",
     "&:hover": {
       backgroundColor: "#0c7b83",
     },
 
     [theme.breakpoints.only("xs")]: {
-      right: 16,
-      bottom: 16,
-      marginLeft: 250,
-    },
-    [theme.breakpoints.only("md")]: {
-      right: 16,
-      bottom: 16,
-      marginLeft: 250,
+      right: "10%",
+      top: "80%",
     },
     [theme.breakpoints.only("sm")]: {
-      right: 16,
-      bottom: 16,
-      marginLeft: 250,
-    },
-    [theme.breakpoints.only("lg")]: {
-      right: 16,
-      bottom: 16,
-      marginLeft: 250,
+      right: "30%",
+      top: "80%",
     },
   }));
 

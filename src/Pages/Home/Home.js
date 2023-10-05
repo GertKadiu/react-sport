@@ -1,68 +1,45 @@
-import Chip from "../../Components/Chip/Chip";
-import Post from "../../Components/Post/Post";
-import classes from "./Home.module.css";
 import NavBar from "../../Components/NavBar/NavBar";
-import * as React from "react";
 import Fab from "../../Components/Fab/Fab";
 import { FormControl } from "@mui/material";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import SearchIcon from "@mui/icons-material/Search";
+import classes from "./Home.module.css";
+import { HomeAction } from "../../hooks/Action";
 
-const DUMMY_DATA = [
-  {
-    key: "p1",
-    name: "Hinata",
-    description: "Text",
-    time: "20-02-2023 15:00",
-    participants: "0/5",
-    tags: "football",
-  },
-  {
-    key: "p2",
-    name: "Hinata",
-    description: "Text",
-    time: "20-02-2023 15:00",
-    participants: "0/5",
-    tags: "football",
-    likes: "12 Likes",
-    comments: "Show all comments",
-  },
-  {
-    key: "p3",
-    name: "Naruto",
-    description: "Text",
-    time: "20-02-2023 15:00",
-    participants: "5/5",
-    tags: "football",
-    likes: "12 Likes",
-    comments: "Show all comments",
-  },
-];
 
-function Home(props) {
+function Home() {
+
+const { displayedPostData,  posts, handleLoadMore, navigate, displayedPosts } = HomeAction()
   return (
     <div className={classes.contanier}>
       <div className={classes.navBar}>
-        <NavBar isNavbar />
+        <NavBar
+          isNavbar
+          Icon={
+            <PermIdentityIcon
+              onClick={() => navigate("/profile")}
+              sx={{ color: "white" }}
+            />
+          }
+          SearchIcon={
+            <SearchIcon
+              sx={{ color: "white", marginTop: "3px", marginLeft: "7px" }}
+            />
+          }
+        />
       </div>
       <FormControl
         sx={{ width: "340px", marginBottom: "4px", marginTop: "66px" }}
-      >
-        <Chip label="Search tag" />
-      </FormControl>
-      <ul>
-        {DUMMY_DATA.map((data) => (
-          <Post
-            key={data.key}
-            name={data.name}
-            description={data.description}
-            time={data.time}
-            participants={data.participants}
-            tags={data.tags}
-            likes={data.likes}
-            comments={data.comments}
-          />
-        ))}
-      </ul>
-        <Fab />
+      ></FormControl>
+      {displayedPostData}
+      <div style={{ marginBottom: "20px" }}>
+        {displayedPosts < posts.length ? (
+          <button onClick={handleLoadMore} className={classes.loadmore}>
+            Load More
+          </button>
+        ) : null}
+      </div>
+      <Fab />
     </div>
   );
 }

@@ -1,0 +1,69 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for the overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.modal {
+  background: white;
+  padding: 0 10px;
+  width: 300px;
+  max-height: 300px; /* Set the maximum height for the modal */
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto; /* Enable vertical scrollbar when content exceeds max height */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0;
+  padding: 16px 10px;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1; /* Ensure the header is above the scrolling content */
+  border-bottom: 1px solid #999;
+  text-align: center; 
+}
+
+.header h2 {
+  margin: 0;
+  text-align: center;
+}
+
+.line{
+  position: sticky;
+  top: 40px;
+  z-index: 1;
+}
+
+.header svg {
+  cursor: pointer;
+}
+
+.modal::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+@media screen and (min-width: 300px) {
+  .modal {
+    max-height: 350px;
+  }
+}

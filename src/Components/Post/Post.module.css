@@ -1,106 +1,163 @@
 .cardHeader {
-   display: flex;
-   justify-content: space-between;
-   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.tags{
-   display: flex;
-   justify-content: space-between;
-   width: 63%;
-   font-size: 12px;
-   color: black;
+.tags {
+  display: flex;
+  flex-wrap: wrap; /* This allows items to wrap to a new line when they reach 100% width */
+  gap: 5px;
+  width: 100%;
+  font-size: 12px;
+  color: black;
+  word-break: break-all;
 }
 
-.taget{
-   background-color: #EBEBEB;
-   border-radius: 13px;
-   color: #3C3A3B;
-   padding: 0.3px 9px;
+.taget {
+  background-color: #ebebeb;
+  border-radius: 13px;
+  color: #3c3a3b;
+  padding: 0.3px 9px;
 }
-.name{
-   display: flex;
-   flex-direction: column;
+
+.name {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .line {
-   background-color: #EBEBEB;
-   border-radius: 10px;
-   padding: 1px;
-   width: 100%;
-   margin-top: 12px;
+  background-color: #ebebeb;
+  border-radius: 10px;
+  padding: 1px;
+  width: 100%;
+  margin-top: 12px;
 }
 
 .time {
-   display: flex;
-   width: 46%;
-   align-items: center;
-   justify-content: space-between;
-   margin-top: 10px;
-   font-size: 14px;
-   color: #3C3A3B;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #3c3a3b;
 }
 
 .contanier {
-   display: flex;
-   justify-content: space-between;
-   width: 65%;
-   font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
 }
 
-.participants{
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   width: 17%;
-   margin-top: 6px;
-   margin-bottom: 6px;
-   font-size: 14px;
-   color: #3C3A3B;
+.participants {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #3c3a3b;
 }
 
-.description{
-   display: flex;
-   justify-content: space-between;
-   width: 23%;
-   margin-top: 10px;
-   font-size: 16px;
-   color: #3C3A3B;
+.description {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #3c3a3b;
+  word-break: break-word;
 }
 
 .profile {
-   display: flex;
-   width: 37%;
-   justify-content: space-between;
-}
-
-.profile2 {
-   display: flex;
-   align-items: flex-end;
-   align-items: center;
-   width: 28%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .border {
-   width: 100%;
-   border: 4px green;
+  width: 100%;
+  border: 4px green;
 }
 
-.button {
-   width: 20%;
+.fund {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
 }
 
 .icon {
-   display: flex;
-   width: 16%;
-   justify-content: space-between;
-   margin-top: 12px ;
+  display: flex;
+  justify-content: flex-start;
+  justify-content: space-between;
+  width: 22%;
+  margin-top: 15px;
+  font-size: 14px;
+}
+.likes {
+  margin-top: 6px;
+  font-size: 14px;
 }
 
-.likes {
-   display: flex;
-   width: 23%;
-   justify-content: flex-start;
-   margin-top: 6px;
-   font-size: 14px;
+.comments {
+  margin-top: 6px;
+  font-size: 14px;
+  margin-left: 10px;
+  text-decoration: none;
+  color: #3c3a3b;
+}
+
+.img {
+  height: 40px;
+  width: 40px;
+}
+
+.deleteModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.deleteModal p {
+  background: white;
+  padding: 30px;
+  max-width: 300px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.deletebutton {
+  display: flex;
+  flex-direction: row;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 40px;
+}
+
+.yes {
+  padding: 10px;
+  margin-right: 20px;
+  border-radius: 5px;
+  border-color: transparent;
+}
+
+.yes:hover {
+  background-color: red;
+}
+
+.no {
+  padding: 10px;
+  border-color: red;
+  border-radius: 5px;
+  border-color: transparent;
 }

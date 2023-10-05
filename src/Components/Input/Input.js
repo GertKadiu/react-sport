@@ -1,98 +1,19 @@
 import * as React from "react";
 import TextField from "@mui/material/TextField";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { IconButton } from "@mui/material";
-import Button from "../Button/Button";
-import { ButtonTypes } from "../Button/ButtonTypes";
 
 function Input(props) {
 
-  const PostButton = () => (
-    <IconButton>
-      <Button type={ButtonTypes.POST} btnText="Post" />
-    </IconButton>
-  );
+  const Icon = (props) => <IconButton>{props.Icon}</IconButton>;
 
-  const Icon = (props) => (
-    <IconButton>
-      {props.Icon}
-    </IconButton>
-  );
-
-  const [value, setValue] = React.useState(null);
+  const {initialValue} = props;
 
   return (
     <div>
-      {props.isClaendar && (
-        <FormControl fullWidth>
-          <LocalizationProvider variant="filled" dateAdapter={AdapterDayjs}>
-            <DatePicker
-              label="Calendar"
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#EBEBEB",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#118C94",
-                  },
-                },
-                "& .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root": {
-                  color: "#666666",
-                },
-                "& .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused":
-                  {
-                    color: "#666666",
-                  },
-              }}
-              value={value}
-              onChange={(newValue) => setValue(newValue)}
-            />
-          </LocalizationProvider>
-        </FormControl>
-      )}
-
-      {props.isPosting && (
-        <FormControl fullWidth>
-          <TextField
-            label={props.label}
-            type={props.type}
-            variant={props.variant}
-            autoComplete="off"
-            sx={{
-              "& .MuiFilledInput-root": {
-                border: "1px solid #e2e2e1",
-                overflow: "hidden",
-                backgroundColor: "transparent",
-                borderRadius: 1,
-                "&.Mui-focused": {
-                  backgroundColor: "transparent",
-                  boxShadow: `none`,
-                  borderColor: "#118C94",
-                },
-                "&:hover": {
-                  backgroundColor: "transparent",
-                },
-              },
-            }}
-            InputProps={{
-              disableUnderline: true,
-              endAdornment: (
-                <PostButton value={props.value} onClick={props.onClick} />
-              ),
-            }}
-            InputLabelProps={{
-              style: { color: "#666666" },
-            }}
-          />
-        </FormControl>
-      )}
 
       {props.isCssTextField && (
         <FormControl fullWidth>
@@ -103,20 +24,13 @@ function Input(props) {
             onChange={props.onChange}
             label={props.label}
             variant={props.variant}
+            helperText={props.error ? props.errortext : ""}
+            errortext={props.errortext}
+            error={props.error}
+            onBlur={props.onBlur}
             sx={{
-              "& label.Mui-focused": {
-                color: "#118C94",
-              },
               "& .MuiInput-underline:after": {
                 borderBottomColor: "#118C94",
-              },
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  borderColor: "#EBEBEB",
-                },
-                "&.Mui-focused fieldset": {
-                  borderColor: "#118C94",
-                },
               },
             }}
             InputLabelProps={{
@@ -129,14 +43,17 @@ function Input(props) {
       {props.IsUsername && (
         <TextField
           style={{ marginBottom: 16 }}
-          helperText={props.error ? props.errorText : ""}
+          helperText={props.error ? props.errortext : ""}
+          errortext={props.errortext}
           type={props.type}
           id={props.id}
           label={props.label}
+          autoComplete={props.autoComplete}
+          onBlur={props.onBlur}
           value={props.value}
           onChange={props.onChange}
+          defaultValue={initialValue}
           error={props.error}
-          onBlur={props.onBlur}
           variant={props.variant}
           fullWidth
           sx={{
@@ -154,11 +71,11 @@ function Input(props) {
                 backgroundColor: "transparent",
               },
               "& input[type=number]::-webkit-outer-spin-button": {
-                "-webkit-appearance": "none",
+                WebkitAppearance: "none",
                 margin: 0,
               },
               "& input[type=number]::-webkit-inner-spin-button": {
-                "-webkit-appearance": "none",
+                WebkitAppearance: "none",
                 margin: 0,
               },
             },
@@ -186,7 +103,7 @@ function Input(props) {
           <TextField
             value={props.value}
             onChange={props.onChange}
-            helperText={props.error ? props.errorText : ""}
+            helperText={props.error ? props.errortext : ""}
             error={props.error}
             label={props.label}
             onBlur={props.onBlur}

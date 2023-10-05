@@ -1,70 +1,97 @@
 .contanier {
-   display: flex;
-   align-items: center;
-   margin: auto;
-   flex-direction: column;
-   background-color: #F4F4F4;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  flex-direction: column;
+  background-color: #f4f4f4;
+  max-width: 390px;
+    height: 100vh; 
+  overflow: auto;
 }
 
-.header{
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   width: 100%;
-   margin-top: 76px;
-   max-width: 330px;
+.contanier::-webkit-scrollbar {
+  width: 0.5em;
 }
 
-.follow{
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   font-size: 14px;
-   align-items: center;
-   font-weight: bolder;
+.contanier::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.contanier::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+/* Media query for large screens (e.g., desktop) */
+@media screen and (min-width: 768px) {
+  .contanier {
+    max-height: calc(100vh - 100px);
+  }
+}
+
+.contanier2{
+  max-width: 330px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-top: 76px;
+  max-width: 330px;
+}
+
+.follow {
+  display: flex;
+  flex-direction: column;
+  margin-left: 70px;
+  font-size: 14px;
+  align-items: center;
+  font-weight: bolder;
 }
 
 .line {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      align-items: center;
-      justify-content: center;
-      margin-top: 32px;
-      margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+  margin-bottom: 16px;
 }
 
-.line::before, .line::after{
-   content: '';
-   height: 2px;
-   background-color: #EBEBEB;
-   display: flex;
-   width: 120px;
+.line::before,
+.line::after {
+  content: "";
+  height: 2px;
+  background-color: #ebebeb;
+  display: flex;
+  width: 120px;
 }
 
-.span{
-   background-color:#EBEBEB;
-   text-align: center;
-   border-radius: 10px;
-   font-size: smaller;
-   font-size: 14px;
+.span {
+  background-color: #ebebeb;
+  text-align: center;
+  border-radius: 10px;
+  font-size: smaller;
+  font-size: 14px;
 }
 
-.join{
-   color: #999999;
-   margin-right: 215px;
-   font-size: 12px;
-   margin-bottom: 16px;
-   margin-top: 8px;
+.join {
+  color: #999999;
+  display: flex;
+  font-size: 12px;
+  margin-bottom: 16px;
+  margin-top: 8px;
 }
 
-.bio{
-   color: #3C3A3B;
-   margin-right: 185px;
-   margin-top: 8px;
-   font-size: 14px;
+.bio {
+  color: #3c3a3b;
+  margin-top: 8px;
+  font-size: 14px;
 }
 
 .navBar {
   z-index: 9;
   position: fixed;
 }
+
+
+

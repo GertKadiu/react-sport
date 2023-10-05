@@ -1,87 +1,141 @@
-import Avatar from "@mui/material/Avatar";
-import Post from "../../Components/Post/Post";
-import classes from "./Profile.module.css";
-import NavBar from "../../Components/NavBar/NavBar";
-import * as React from "react";
+import ArrowBackSharpIcon from "@mui/icons-material/ArrowBackSharp";
 import Fab from "../../Components/Fab/Fab";
-import Button from "../../Components/Button/Button";
-import { ButtonTypes } from "../../Components/Button/ButtonTypes";
-import { useNavigate } from "react-router-dom";
-import ima2 from "../../Components/Images/kokaxhines.png";
-
-const DUMMY_DATA = [
-  {
-    key: "p1",
-    name: "Hinata",
-    description: "Text",
-    time: "20-02-2023 15:00",
-    participants: "0/5",
-    tags: "football",
-  },
-  {
-    key: "p2",
-    name: "Hinata",
-    description: "Text",
-    time: "20-02-2023 15:00",
-    participants: "0/5",
-    tags: "football",
-    likes: "12 Likes",
-    comments: "Show all comments",
-  },
-];
+import Button from "../../UI/Button/Button";
+import { ButtonTypes } from "../../UI/Button/ButtonTypes";
+import NavBar from "../../Components/NavBar/NavBar";
+import classes from "./Profile.module.css";
+import { ProfileAction } from "../../hooks/Action";
+import Modal from "../../Components/Modal/Modal";
+import { useModal } from "../../hooks/Counter";
+import ContentLoader from "react-content-loader";
 
 function Profile(props) {
-  const navigate = useNavigate();
+  const {
+    users,
+    isLoading,
+    currentUserId,
+    navigate,
+    post,
+    postData,
+    bio,
+    name,
+    avatar,
+    joinDate,
+    handleFollow,
+    userId,
+    followingUserAvatars,
+    followersUserAvatars,
+  } = ProfileAction();
+  
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
+    const {
+    isModalOpen,
+    modalType,
+    openModal,
+    setIsModalOpen
+  } = useModal()
+
+  const isCurrentUserProfile = currentUserId === userId;
 
   return (
     <div className={classes.contanier}>
       <div className={classes.navBar}>
-      <NavBar isNavbarProfile name="Hinata" />
-      </div>
-      <div className={classes.header}>
-        <div>
-          <Avatar sx={{ width: 74, height: 74 }}>
-            <img
-              src={ima2}
-              alt="background"
-              style={{ width: 74, height: 74 }}
+        <NavBar
+          Icon={
+            <ArrowBackSharpIcon
+              onClick={handleGoBack}
+              sx={{ width: 20, height: 20, marginTop: "6px" }}
             />
-          </Avatar>
-        </div>
-        <div className={classes.follow}>
-          <div style={{ fontSize: "16px" }}>20</div>
-          <div>Followers</div>
-        </div>
-        <div className={classes.follow}>
-          <div style={{ fontSize: "16px" }}>12</div>
-          <div>Following</div>
-        </div>
+          }
+          isNavbarProfile
+          name={name}
+        />
       </div>
-      <div className={classes.bio}>Smth for my Bio here.</div>
-      <div className={classes.join}>JOINED SINCE 1997</div>
-      <Button
-        onClick={() => navigate("/edit")}
-        type={ButtonTypes.TERTIARY}
-        btnText="Edit Profile"
-      ></Button>
-      <div className={classes.line}>
-        <span className={classes.span}>5 Post</span>
-      </div>
-      <ul>
-        {DUMMY_DATA.map((data) => (
-          <Post
-            key={data.key}
-            name={data.name}
-            description={data.description}
-            time={data.time}
-            participants={data.participants}
-            tags={data.tags}
-            likes={data.likes}
-            comments={data.comments}
+      <div className={classes.contanier2}>
+        <div className={classes.header}>
+          {isLoading ? (
+            <div style={{ marginLeft: "10px" }}>
+              <ContentLoader
+                height={74}
+                width={74}
+                speed={1}
+                backgroundColor={"#EBEBEB"}
+                foregroundColor={"#999"}
+              >
+                <rect ry="40" width="74" height="70" />
+              </ContentLoader>
+            </div>
+          ) : (
+            <div>{avatar}</div>
+          )}
+          <div className={classes.follow}>
+            <div style={{ fontSize: "16px" }}>
+              {users[0]?.followersCount || 0}
+            </div>
+            <div
+              onClick={() => openModal("followers", userId)}
+              style={{ cursor: "pointer" }}
+            >
+              Followers
+            </div>
+          </div>
+          <div className={classes.follow}>
+            <div style={{ fontSize: "16px" }}>
+              {users[0]?.followingCount || 0}
+            </div>
+            <div
+              onClick={() => openModal("following", userId)}
+              style={{ cursor: "pointer" }}
+            >
+              Following
+            </div>
+          </div>
+        </div>
+        <div className={classes.bio}>{bio}</div>
+        <div className={classes.join}>
+          JOINED SINCE <div style={{ marginLeft: "5px" }}>{joinDate}</div>
+        </div>
+        {currentUserId === userId ? (
+          <Button
+            onClick={() => navigate("/edit")}
+            type={ButtonTypes.TERTIARY}
+            btnText="Edit Profile"
           />
-        ))}
-      </ul>
-      <Fab />
+        ) : (
+          <Button
+            onClick={handleFollow}
+            type={ButtonTypes.FOLLOW}
+            btnText={
+              users[0]?.followers?.includes(currentUserId)
+                ? "Unfollow"
+                : "Follow"
+            }
+          />
+        )}
+
+        <div className={classes.line}>
+          <span className={classes.span}>{post.length} Posts</span>
+        </div>
+        <div>
+          <ul>
+            {postData.map((postDataItem, index) => (
+              <li key={index}>{postDataItem}</li>
+            ))}
+          </ul>
+        </div>
+        <Fab />
+      </div>
+      {currentUserId && isModalOpen && isCurrentUserProfile ? (
+        <Modal
+          modalType={modalType}
+          followingUserAvatars={followingUserAvatars}
+          followersUserAvatars={followersUserAvatars}
+          closeModal={() => setIsModalOpen(false)}
+        />
+      ) : null}
     </div>
   );
 }

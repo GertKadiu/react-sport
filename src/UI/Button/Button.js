@@ -7,13 +7,19 @@ function Button(props) {
   const getButtonClass = () => {
     switch (type) {
       case ButtonTypes.PRIMARY:
-        return "primaryBtn  button";
+        return "primaryBtn button";
+
+      case ButtonTypes.Modal:
+        return "modalBtn button";
 
       case ButtonTypes.SECONDARY:
         return "secondaryBtn";
 
       case ButtonTypes.TERTIARY:
         return "tertiaryBtn";
+
+      case ButtonTypes.FOLLOW:
+        return "followBtn";
 
       case ButtonTypes.POST:
         return "postBtn";
@@ -27,13 +33,14 @@ function Button(props) {
   };
 
   return (
-    <div
+    <button
       disabled={disabled}
+      type={type === ButtonTypes.DISABLED ? "button" : "submit"}
       onClick={onClick}
-      className={`${getButtonClass()}`}
+      className={getButtonClass()}
     >
       {btnText}
-    </div>
+    </button>
   );
 }
 

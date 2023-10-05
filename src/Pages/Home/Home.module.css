@@ -3,10 +3,53 @@
   align-items: center;
   margin: auto;
   flex-direction: column;
-  background-color: #ebebeb;
+  background-color: #F4F4F4;
+  max-width: 400px;
+  height: 100vh; 
+  overflow: auto;
 }
+
+.contanier::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.contanier::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.contanier::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+/* Media query for large screens (e.g., desktop) */
+@media screen and (min-width: 768px) {
+  .contanier {
+    max-height: calc(100vh - 100px);
+  }
+}
+
+
 
 .navBar {
   z-index: 9;
   position: fixed;
+}
+
+.PostLoadiung{
+  text-align: center;
+  margin-top: 20%;
+}
+
+.err{
+  text-align: center;
+  color: red;
+  margin-top: 20%;
+}
+
+.loadmore{
+  background-color: #118C94;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
 }

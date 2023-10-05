@@ -32,7 +32,7 @@ const useInput = (validateValue) => {
     isValid: valueIsValid,
     valueChangeHandler,
     InputBlurHandler,
-    reset,
+    reset: reset,
     showPassword: showPassword,
     handleClickShowPassword,
     handleMouseDownPassword,

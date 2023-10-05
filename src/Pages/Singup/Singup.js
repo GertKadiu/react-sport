@@ -1,17 +1,16 @@
 import classes from "./Singup.module.css";
-import Button from "../../Components/Button/Button";
+import Button from "../../UI/Button/Button";
 import { Link } from "react-router-dom";
 import Input from "../../Components/Input/Input";
-import useInput from "../../Components/hooks/use-inpute";
-import { ButtonTypes } from "../../Components/Button/ButtonTypes";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../Components/Config/firebase";
-import { useNavigate } from "react-router-dom";
-import { render } from "@testing-library/react";
-import { FormControl } from "@mui/material";
-import img1 from "../../Components/Images/Background1_1.svg";
+import useInput from "../../hooks/use-inpute";
+import { ButtonTypes } from "../../UI/Button/ButtonTypes";
 import img2 from "../../Components/Images/sport.png";
 import img3 from "../../Components/Images/Football.png";
+import MuiAlert from "@mui/material/Alert";
+import React from "react";
+import ClipLoader from "react-spinners/ClipLoader";
+import { useSignup } from "../../hooks/Authentication";
+import img from "../../Components/Images/Nbacground.jpg"
 
 function Singup(props) {
   const {
@@ -20,7 +19,6 @@ function Singup(props) {
     isValid: enteredNameIsValid,
     valueChangeHandler: nameChangeHandler,
     InputBlurHandler: nameBlurHandler,
-    reset: resetName,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -29,7 +27,6 @@ function Singup(props) {
     isValid: enteredEmailIsValid,
     valueChangeHandler: emailChangeHandler,
     InputBlurHandler: emailBlurHandler,
-    reset: resetEmail,
   } = useInput((value) => value.trim().includes("@"));
 
   const {
@@ -38,7 +35,6 @@ function Singup(props) {
     isValid: enteredPasswordIsValid,
     valueChangeHandler: passwordChangeHandler,
     InputBlurHandler: passwordBlur,
-    reset: resetPassword,
     showPassword,
     handleClickShowPassword,
     handleMouseDownPassword,
@@ -49,99 +45,115 @@ function Singup(props) {
     formIsValid = true;
   }
 
-  const navigate = useNavigate();
   
-  const clickHandler = async () => {
-    try {
-      await createUserWithEmailAndPassword(
-        auth,
-        enteredEmail,
-        enteredPassword,
-        enteredName
-      );
-    } catch (error) {
-      console.log(error);
-    }
-    if (formIsValid) {
-      navigate("/");
-    } else {
-      render(emailInputHasError, passwordInputHasError, nameInputHasError);
-    }
-    if (!formIsValid) {
-      resetName("");
-      resetPassword("");
-      resetEmail('');
-    } 
-  };
-
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return (
+      <MuiAlert
+        elevation={6}
+        sx={{ zIndex: "22", marginTop: "10px" }}
+        ref={ref}
+        variant="filled"
+        {...props}
+      />
+    );
+  });
+const { error, success, isLoading, createPost } = useSignup(
+    enteredEmail,
+    enteredPassword,
+    enteredName
+  );
   return (
-    <div className={classes.contanier}>
-      <img src={img1} alt="backround" className={classes.image} />
-      <div className={classes.card}>
-        <img src={img3} alt="logo1" className={classes.image2} />
-        <img
-          src={img2}
-          alt="logo"
-          style={{ width: 100, height: 30, marginTop: "32px" }}
-        />
-        <form>
-          <div className={classes.h2}>Sign up</div>
-          <FormControl fullWidth>
-            <Input
-              label="Email"
-              value={enteredEmail}
-              onChange={emailChangeHandler}
-              error={emailInputHasError}
-              onBlur={emailBlurHandler}
-              variant="filled"
-              inputType="email"
-              IsUsername
-              type="email"
-              errorText="Email includes '@!"
-            />
-            <Input
-              label="Username"
-              inputType="text"
-              id="outlined-username"
-              variant="filled"
-              IsUsername
-              type="text"
-              value={enteredName}
-              onChange={nameChangeHandler}
-              onBlur={nameBlurHandler}
-              error={nameInputHasError}
-              errorText="Username must not be empty!"
-            />
-          </FormControl>
-          <FormControl fullWidth sx={{ marginBottom: "16px" }}>
-            <Input
-              label="Password"
-              id="outlined-adornment-password"
-              variant="filled"
-              value={enteredPassword}
-              onChange={passwordChangeHandler}
-              error={passwordInputHasError}
-              onBlur={passwordBlur}
-              errorText="Password must be 8 characters long"
-              type={showPassword}
-              isPassword
-              onClick={handleClickShowPassword}
-              onMouseDown={handleMouseDownPassword}
-            />
-          </FormControl>
-          <Button
-            onClick={clickHandler}
-            type={formIsValid ? ButtonTypes.PRIMARY : ButtonTypes.DISABLED}
-            btnText="Sign up"
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+        backgroundImage: `url(${process.env.PUBLIC_URL + img})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className={classes.contanier}>
+        {error && <Alert severity="error">This is an error message!</Alert>}
+        {success && (
+          <Alert severity="success">Account created successfully!</Alert>
+        )}
+        <div className={classes.card}>
+          <img src={img3} alt="logo1" className={classes.image2} />
+          <img
+            src={img2}
+            alt="logo"
+            style={{ width: 100, height: 30, marginTop: "32px" }}
           />
-          <div className={classes.line}></div>
-          <div className={classes.p}>
-            I have an account.
-            <Link className={classes.a2} to="/">
-              Login
-            </Link>
-          </div>
-        </form>
+          <form onSubmit={createPost}>
+            <div className={classes.h2}>Sign up</div>
+            <div style={{ width: "308px", marginBottom: "24px" }}>
+              <Input
+                label="Email"
+                value={enteredEmail}
+                onChange={emailChangeHandler}
+                error={emailInputHasError}
+                onBlur={emailBlurHandler}
+                variant="filled"
+                inputType="email"
+                IsUsername
+                type="email"
+                errortext="Email includes '@!"
+              />
+              <Input
+                label="Username"
+                inputType="text"
+                id="outlined-username"
+                variant="filled"
+                IsUsername
+                type="text"
+                value={enteredName}
+                onChange={nameChangeHandler}
+                onBlur={nameBlurHandler}
+                error={nameInputHasError}
+                errortext="Username must not be empty!"
+              />
+              <Input
+                label="Password"
+                id="outlined-adornment-password"
+                variant="filled"
+                value={enteredPassword}
+                onChange={passwordChangeHandler}
+                error={passwordInputHasError}
+                onBlur={passwordBlur}
+                errortext="Password must be 8 characters long"
+                type={showPassword}
+                isPassword
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+              />
+            </div>
+            <Button
+              type={!formIsValid ? ButtonTypes.DISABLED : ButtonTypes.PRIMARY}
+              btnText={
+                isLoading ? (
+                  <ClipLoader
+                    color={"white"}
+                    size={15}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                  />
+                ) : (
+                  "Sign up"
+                )
+              }
+              disabled={!formIsValid || isLoading}
+            />
+            <div className={classes.line}></div>
+            <div className={classes.p}>
+              I have an account.
+              <Link className={classes.a2} to="/">
+                Login
+              </Link>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
