@@ -46,7 +46,7 @@
   font-size: 14px;
   align-items: center;
   font-weight: bolder;
-  color: rgb(60, 58, 59);
+  color: #3c3a3b;
 }
 
 .line {
@@ -73,6 +73,7 @@
   border-radius: 10px;
   font-size: smaller;
   font-size: 14px;
+  color: rgb(60, 58, 59);
 }
 
 .join {

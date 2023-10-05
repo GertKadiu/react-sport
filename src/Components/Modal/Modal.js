@@ -110,7 +110,7 @@ function Modal({
             alignItems: "center",
           }}
         >
-          <h2 style={{fontSize:"22px", textAlign:"center"}}>
+          <h2 style={{ fontSize: "22px", textAlign: "center", color: "black" }}>
             {modalType === "followers"
               ? "Followers"
               : modalType === "following"
@@ -119,8 +119,7 @@ function Modal({
           </h2>
           <ClearSharpIcon onClick={closeModal} />
         </div>
-        <div
-        >
+        <div>
           {names.map((name, index) => (
             <div
               key={index}
@@ -128,6 +127,7 @@ function Modal({
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
+                color: "black",
               }}
             >
               <div
